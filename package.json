@@ -19,7 +19,7 @@
     "InversifyJS",
     "socket.io"
   ],
-  "author": "Alexander Shelepenok",
+  "author": "Alexander Shelepenok <alxshelepenok@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/alxshelepenok/inversify-socket-utils/issues"
