@@ -32,7 +32,7 @@
     "@types/chai": "4.1.4",
     "@types/cookie-parser": "1.4.1",
     "@types/socket.io": "1.4.36",
-    "@types/mocha": "5.2.3",
+    "@types/mocha": "5.2.5",
     "@types/prettyjson": "0.0.28",
     "@types/sinon": "5.0.1",
     "@types/supertest": "2.0.5",
@@ -54,10 +54,10 @@
     "publish-please": "3.2.0",
     "reflect-metadata": "0.1.12",
     "run-sequence": "2.2.1",
-    "sinon": "6.0.1",
+    "sinon": "6.1.4",
     "source-map-support": "0.5.6",
     "supertest": "3.1.0",
-    "tslint": "5.9.1",
+    "tslint": "5.11.0",
     "typescript": "^2.8.3"
   },
   "dependencies": {
