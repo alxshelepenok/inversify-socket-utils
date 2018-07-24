@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/alxshelepenok/inversify-socket-utils.svg?branch=master)](https://travis-ci.org/alxshelepenok/inversify-socket-utils)
 [![npm version](https://badge.fury.io/js/inversify-socket-utils.svg)](https://badge.fury.io/js/inversify-socket-utils)
 [![Dependency Status](https://david-dm.org/alxshelepenok/inversify-socket-utils.svg)](https://david-dm.org/alxshelepenok/inversify-socket-utils)
-[![devDependency Status](https://david-dm.org/alxshelepenok/inversify-socket-utils/dev-status.svg)](https://david-dm.org/alxshelepenok/inversify-socket-utils#info=devDependencies)
+[![devDependency Status](https://david-dm.org/alxshelepenok/inversify-socket-utils/dev-status.svg)](https://david-dm.org/alxshelepenok/inversify-socket-utils#info=devDependencies) [![Greenkeeper badge](https://badges.greenkeeper.io/alxshelepenok/inversify-socket-utils.svg)](https://greenkeeper.io/)
 
 Some utilities for the development of Socket IO applications with Inversify.
 
