@@ -51,9 +51,7 @@
 "@sinonjs/samsam@^2.0.0":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@sinonjs/samsam/-/samsam-2.1.2.tgz#16947fce5f57258d01f1688fdc32723093c55d3f"
-  dependencies:
-    array-from "^2.1.1"
-    
+
 "@types/async@2.0.49":
   version "2.0.49"
   resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.49.tgz#92e33d13f74c895cb9a7f38ba97db8431ed14bc0"
@@ -140,9 +138,9 @@
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
 
-"@types/sinon@5.0.3":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-5.0.3.tgz#2b1840122f372350c563e3ceda2f447b55f3a927"
+"@types/sinon@5.0.4":
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-5.0.4.tgz#a765b390b373cf01a3b19b0c97f9eb4bb2a168b1"
 
 "@types/socket.io@1.4.38":
   version "1.4.38"
