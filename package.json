@@ -34,7 +34,7 @@
     "@types/socket.io": "2.1.0",
     "@types/mocha": "5.2.5",
     "@types/prettyjson": "0.0.28",
-    "@types/sinon": "5.0.4",
+    "@types/sinon": "5.0.6",
     "@types/supertest": "2.0.6",
     "async": "2.6.1",
     "bluebird": "3.5.3",
