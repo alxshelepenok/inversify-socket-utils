@@ -54,9 +54,10 @@
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@sinonjs/samsam/-/samsam-2.1.2.tgz#16947fce5f57258d01f1688fdc32723093c55d3f"
 
-"@types/async@2.0.50":
-  version "2.0.50"
-  resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.50.tgz#117540e026d64e1846093abbd5adc7e27fda7bcb"
+"@types/async@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@types/async/-/async-2.4.0.tgz#2d707a0127a4fe45877c3152d813e4b23c6ce160"
+  integrity sha512-1/6EglKPJZjkj2KWSFrvbOeqDZTb+KEiU293MUwc/z3/g4a+jOPADHfcOzt/EbY0uEEr+dkUWTYQfVDzzOrMaw==
 
 "@types/bluebird@3.5.24":
   version "3.5.24"
@@ -3221,9 +3222,10 @@ rechoir@^0.6.2:
   dependencies:
     resolve "^1.1.6"
 
-reflect-metadata@0.1.12:
-  version "0.1.12"
-  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.12.tgz#311bf0c6b63cd782f228a81abe146a2bfa9c56f2"
+reflect-metadata@0.1.13:
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.13.tgz#67ae3ca57c972a2aa1642b10fe363fe32d49dc08"
+  integrity sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==
 
 regex-not@^1.0.0, regex-not@^1.0.2:
   version "1.0.2"
@@ -3708,6 +3710,7 @@ superagent@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/superagent/-/superagent-4.1.0.tgz#c465c2de41df2b8d05c165cbe403e280790cdfd5"
   integrity sha512-FT3QLMasz0YyCd4uIi5HNe+3t/onxMyEho7C3PSqmti3Twgy2rXT4fmkTz6wRL6bTF4uzPcfkUCa8u4JWHw8Ag==
+
   dependencies:
     component-emitter "^1.2.0"
     cookiejar "^2.1.2"
