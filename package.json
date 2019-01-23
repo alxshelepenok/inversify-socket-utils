@@ -15,8 +15,8 @@
     "url": "git+https://github.com/inversify/inversify-express-utils.git"
   },
   "keywords": [
-    "Inversify",
-    "InversifyJS",
+    "inversify",
+    "inversifyJS",
     "socket.io"
   ],
   "author": "Alexander Shelepenok <alxshelepenok@gmail.com>",
