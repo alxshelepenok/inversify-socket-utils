@@ -1,6 +1,6 @@
 {
   "name": "inversify-socket-utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Some utilities for the development of Socket IO applications with Inversify",
   "main": "lib/index.js",
   "jsnext:main": "es/index.js",

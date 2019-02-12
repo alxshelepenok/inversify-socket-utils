@@ -1,7 +1,9 @@
 import { ACTION_TYPE, PARAMETER_TYPE } from "./constants";
 
 namespace Interfaces {
-     export interface Controller { }
+    export interface Instance {}
+
+    export interface Controller {}
 
     export interface ActionDecorator {
         (target: any, key: string): void;
@@ -19,9 +21,9 @@ namespace Interfaces {
         target: any;
     }
 
-     export interface ControllerParameterMetadata {
+    export interface ControllerParameterMetadata {
         [methodName: string]: ParameterMetadata[];
-     }
+    }
 
     export interface ParameterMetadata {
         name: string;

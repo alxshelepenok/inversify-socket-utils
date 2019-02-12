@@ -1,4 +1,5 @@
 export const TYPE = {
+    Instance: Symbol.for("Instance"),
     Controller: Symbol.for("Controller")
 };
 

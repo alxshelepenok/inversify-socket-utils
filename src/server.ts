@@ -17,6 +17,7 @@ export class InversifySocketServer {
 
     public build(): SocketIO.Server {
         this.registerControllers();
+        this.container.bind<Interfaces.Instance>(TYPE.Instance).toConstantValue(this.server);
 
         return this.server;
     }
