@@ -1,5 +1,11 @@
 {
   "extends": [
     "config:base"
-  ]
+  ],
+  "labels": ["renovate"],
+  "prHourlyLimit": 8,
+  "prConcurrentLimit": 16,
+  "rangeStrategy": "bump",
+  "bumpVersion": null,
+  "semanticCommits": true
 }
