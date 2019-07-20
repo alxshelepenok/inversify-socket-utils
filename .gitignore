@@ -68,7 +68,7 @@ package-lock.json
 # JetBrains IDE
 .idea
 .iml
-inversify-express-utils.iml
+inversify-socket-utils.iml
 
 # OS folders
 .DS_Store

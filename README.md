@@ -1,9 +1,9 @@
 # inversify-socket-utils
 
-[![Build Status](https://travis-ci.org/alxshelepenok/inversify-socket-utils.svg?branch=master)](https://travis-ci.org/alxshelepenok/inversify-socket-utils)
+<a target="_blank" href="https://circleci.com/gh/alxshelepenok/gatsby-starter-lumen"><img src="https://circleci.com/gh/alxshelepenok/gatsby-starter-lumen.svg?style=svg"></a>
+[![circleci build status](https://circleci.com/gh/alxshelepenok/inversify-socket-utils.svg?style=svg)](https://circleci.com/gh/alxshelepenok/inversify-socket-utils)
+[![travisci build status](https://travis-ci.org/alxshelepenok/inversify-socket-utils.svg?branch=master)](https://travis-ci.org/alxshelepenok/inversify-socket-utils)
 [![npm version](https://badge.fury.io/js/inversify-socket-utils.svg)](https://badge.fury.io/js/inversify-socket-utils)
-[![Dependency Status](https://david-dm.org/alxshelepenok/inversify-socket-utils.svg)](https://david-dm.org/alxshelepenok/inversify-socket-utils)
-[![devDependency Status](https://david-dm.org/alxshelepenok/inversify-socket-utils/dev-status.svg)](https://david-dm.org/alxshelepenok/inversify-socket-utils#info=devDependencies) [![Greenkeeper badge](https://badges.greenkeeper.io/alxshelepenok/inversify-socket-utils.svg)](https://greenkeeper.io/)
 
 Some utilities for the development of Socket IO applications with Inversify.
 
@@ -86,7 +86,7 @@ console.log(`Server is listening on port 3000`);
 
 The MIT License (MIT)
 
-Copyright (c) 2018 Alexander Shelepenok
+Copyright (c) 2019 Alexander Shelepenok
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

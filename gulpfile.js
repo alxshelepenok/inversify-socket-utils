@@ -1,6 +1,6 @@
 "use strict";
 
-var gulp = require("gulp"),
+const gulp = require("gulp"),
     tslint = require("gulp-tslint"),
     tsc = require("gulp-typescript"),
     runSequence = require("run-sequence"),
@@ -8,9 +8,8 @@ var gulp = require("gulp"),
     istanbul = require("gulp-istanbul"),
     sourcemaps = require("gulp-sourcemaps");
 
-gulp.task("lint", function () {
-
-    var config = {
+gulp.task("lint", () => {
+    const config = {
         fornatter: "verbose",
         emitError: (process.env.CI) ? true : false
     };
@@ -23,91 +22,92 @@ gulp.task("lint", function () {
         .pipe(tslint.report());
 });
 
-var tsLibProject = tsc.createProject("tsconfig.json", {
+const tsLibProject = tsc.createProject("tsconfig.json", {
     module: "commonjs"
 });
 
-gulp.task("build-lib", function () {
+gulp.task("build-lib", () => {
     return gulp.src([
         "src/**/*.ts"
     ])
         .pipe(tsLibProject())
-        .on("error", function (err) {
+        .on("error", (err) => {
             process.exit(1);
         })
         .js.pipe(gulp.dest("lib/"));
 });
 
-var tsEsProject = tsc.createProject("tsconfig.json", {
+const tsEsProject = tsc.createProject("tsconfig.json", {
     module: "es2015"
 });
 
-gulp.task("build-es", function () {
+gulp.task("build-es", () => {
     return gulp.src([
         "src/**/*.ts"
     ])
         .pipe(tsEsProject())
-        .on("error", function (err) {
+        .on("error", (err) => {
             process.exit(1);
         })
         .js.pipe(gulp.dest("es/"));
 });
 
-var tsDtsProject = tsc.createProject("tsconfig.json", {
+const tsDtsProject = tsc.createProject("tsconfig.json", {
     declaration: true,
     noResolve: false
 });
 
-gulp.task("build-dts", function () {
+gulp.task("build-dts", () => {
     return gulp.src([
         "src/**/*.ts"
     ])
         .pipe(tsDtsProject())
-        .on("error", function (err) {
+        .on("error", (err) => {
             process.exit(1);
         })
         .dts.pipe(gulp.dest("dts"));
 
 });
 
-var tstProject = tsc.createProject("tsconfig.json");
+const tstProject = tsc.createProject("tsconfig.json");
 
-gulp.task("build-src", function () {
+gulp.task("build-src", () => {
     return gulp.src([
         "src/**/*.ts"
     ])
         .pipe(sourcemaps.init())
         .pipe(tstProject())
-        .on("error", function (err) {
+        .on("error", (err) => {
             process.exit(1);
         })
         .js.pipe(sourcemaps.write(".", {
-            sourceRoot: function (file) {
+            sourceRoot: (file) => {
                 return file.cwd + '/src';
             }
         }))
         .pipe(gulp.dest("src/"));
 });
 
-gulp.task("istanbul:hook", function () {
+gulp.task("istanbul:hook", () => {
     return gulp.src(["src/**/*.js"])
         .pipe(istanbul())
         .pipe(istanbul.hookRequire());
 });
 
-gulp.task("test", function (cb) {
+gulp.task("test", (cb) => {
     runSequence("istanbul:hook", cb);
 });
 
-gulp.task("build", function (cb) {
+gulp.task("build", (cb) => {
     runSequence(
-        "lint", ["build-src", "build-es", "build-lib", "build-dts"],
+        ["build-src", "build-es", "build-lib", "build-dts"],
         cb);
 });
 
-gulp.task("default", function (cb) {
+gulp.task("default", (cb) => {
     runSequence(
-        "build",
+        "lint",
         "test",
+        "build",
         cb);
 });
