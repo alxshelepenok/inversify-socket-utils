@@ -110,9 +110,9 @@
   version "12.6.8"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.8.tgz#e469b4bf9d1c9832aee4907ba8a051494357c12c"
 
-"@types/prettyjson@0.0.28":
-  version "0.0.28"
-  resolved "https://registry.yarnpkg.com/@types/prettyjson/-/prettyjson-0.0.28.tgz#131a890ded6421b1b545f4510a4aeabc6d465275"
+"@types/prettyjson@0.0.29":
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/@types/prettyjson/-/prettyjson-0.0.29.tgz#3d9176d583e1839aa5c83b088487003652ce38ff"
 
 "@types/range-parser@*":
   version "1.2.3"
