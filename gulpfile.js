@@ -1,113 +1,101 @@
 "use strict";
 
-const gulp = require("gulp"),
-    tslint = require("gulp-tslint"),
-    tsc = require("gulp-typescript"),
-    runSequence = require("run-sequence"),
-    mocha = require("gulp-mocha"),
-    istanbul = require("gulp-istanbul"),
-    sourcemaps = require("gulp-sourcemaps");
-
-gulp.task("lint", () => {
-    const config = {
-        fornatter: "verbose",
-        emitError: (process.env.CI) ? true : false
-    };
-
-    return gulp.src([
-        "src/**/**.ts",
-        "test/**/**.test.ts"
-    ])
-        .pipe(tslint(config))
-        .pipe(tslint.report());
-});
+const gulp = require("gulp");
+const tslint = require("gulp-tslint");
+const tsc = require("gulp-typescript");
+const mocha = require("gulp-mocha");
+const istanbul = require("gulp-istanbul");
+const sourcemaps = require("gulp-sourcemaps");
 
 const tsLibProject = tsc.createProject("tsconfig.json", {
-    module: "commonjs"
-});
-
-gulp.task("build-lib", () => {
-    return gulp.src([
-        "src/**/*.ts"
-    ])
-        .pipe(tsLibProject())
-        .on("error", (err) => {
-            process.exit(1);
-        })
-        .js.pipe(gulp.dest("lib/"));
+  module: "commonjs"
 });
 
 const tsEsProject = tsc.createProject("tsconfig.json", {
-    module: "es2015"
-});
-
-gulp.task("build-es", () => {
-    return gulp.src([
-        "src/**/*.ts"
-    ])
-        .pipe(tsEsProject())
-        .on("error", (err) => {
-            process.exit(1);
-        })
-        .js.pipe(gulp.dest("es/"));
+  module: "es2015"
 });
 
 const tsDtsProject = tsc.createProject("tsconfig.json", {
-    declaration: true,
-    noResolve: false
+  declaration: true,
+  noResolve: false
 });
 
-gulp.task("build-dts", () => {
-    return gulp.src([
-        "src/**/*.ts"
-    ])
-        .pipe(tsDtsProject())
-        .on("error", (err) => {
-            process.exit(1);
-        })
-        .dts.pipe(gulp.dest("dts"));
+const tsProject = tsc.createProject("tsconfig.json");
 
-});
+const buildLib = () => {
+  return gulp.src([
+    "src/**/*.ts"
+  ])
+    .pipe(tsLibProject())
+    .on("error", (err) => {
+      process.exit(1);
+    })
+    .js.pipe(gulp.dest("lib/"));
+}
 
-const tstProject = tsc.createProject("tsconfig.json");
+const buildEs = () => {
+  return gulp.src([
+    "src/**/*.ts"
+  ])
+    .pipe(tsEsProject())
+    .on("error", (err) => {
+      process.exit(1);
+    })
+    .js.pipe(gulp.dest("es/"));
+}
 
-gulp.task("build-src", () => {
-    return gulp.src([
-        "src/**/*.ts"
-    ])
-        .pipe(sourcemaps.init())
-        .pipe(tstProject())
-        .on("error", (err) => {
-            process.exit(1);
-        })
-        .js.pipe(sourcemaps.write(".", {
-            sourceRoot: (file) => {
-                return file.cwd + '/src';
-            }
-        }))
-        .pipe(gulp.dest("src/"));
-});
+const buildDts = () => {
+  return gulp.src([
+    "src/**/*.ts"
+  ])
+    .pipe(tsDtsProject())
+    .on("error", (err) => {
+      process.exit(1);
+    })
+    .dts.pipe(gulp.dest("dts"));
+}
 
-gulp.task("istanbul:hook", () => {
-    return gulp.src(["src/**/*.js"])
-        .pipe(istanbul())
-        .pipe(istanbul.hookRequire());
-});
+const buildSrc = () => {
+  return gulp.src([
+    "src/**/*.ts"
+  ])
+    .pipe(sourcemaps.init())
+    .pipe(tsProject())
+    .on("error", (err) => {
+        process.exit(1);
+    })
+    .js.pipe(sourcemaps.write(".", {
+        sourceRoot: (file) => {
+          return file.cwd + '/src';
+        }
+    }))
+    .pipe(gulp.dest("src/"));
+}
 
-gulp.task("test", (cb) => {
-    runSequence("istanbul:hook", cb);
-});
+const lintTask = () => {
+   const config = {
+    formatter: "verbose",
+    emitError: (process.env.CI) ? true : false
+  };
 
-gulp.task("build", (cb) => {
-    runSequence(
-        ["build-src", "build-es", "build-lib", "build-dts"],
-        cb);
-});
+  return gulp.src([
+    "src/**/**.ts",
+    "test/**/**.test.ts"
+  ])
+    .pipe(tslint(config))
+    .pipe(tslint.report());
+}
 
-gulp.task("default", (cb) => {
-    runSequence(
-        "lint",
-        "test",
-        "build",
-        cb);
-});
+const testTask = () => {
+  return gulp.src(["src/**/*.js"])
+    .pipe(istanbul())
+    .pipe(istanbul.hookRequire());
+}
+
+const buildTask = gulp.parallel(buildSrc, buildEs, buildLib, buildDts);
+const defaultTask = gulp.series(lintTask, testTask, buildTask);
+
+exports.lint = lintTask;
+exports.test = testTask;
+exports.build = buildTask;
+exports.default = defaultTask;

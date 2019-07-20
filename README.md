@@ -23,7 +23,7 @@ Step 1: Create a controller.
 
 ```ts
 import { injectable } from "inversify";
-import {Controller, Payload, ConnectedSocket, OnConnect, OnDisconnect, OnMessage} from "../../../src";
+import { Controller, Payload, ConnectedSocket, OnConnect, OnDisconnect, OnMessage } from "../../../src";
 import "reflect-metadata";
 
 @injectable()
@@ -33,18 +33,18 @@ import "reflect-metadata";
 export class MessageController {
   @OnConnect("connection")
     connection() {
-        console.log("Client connected");
+      console.log("Client connected");
     }
 
     @OnDisconnect("disconnect")
     disconnect() {
-        console.log("Client disconnected");
+      console.log("Client disconnected");
     }
 
     @OnMessage("message")
     message(@Payload() payload: any, @ConnectedSocket() socket: any) {
-        console.log("Message received");
-        socket.emit("message", "Hello!");
+      console.log("Message received");
+      socket.emit("message", "Hello!");
     }
 }
 
@@ -54,7 +54,7 @@ Step 2: Configure container and server.
 
 Configure the inversify container in your composition root as usual.
 
-Then, pass the container to the InversifySocketServer constructor. This will allow it to register all controllers and their dependencies from your container and attach them to the Socket IO app.
+Then, pass the container to the InversifySocketServer constructor. This will allow it to register all controllers and their dependencies from your container and attach them to the socket.io app.
 Then just call server.build() to prepare your app.
 
 In order for the InversifySocketServer to find your controllers, you must bind them to the `TYPE.Controller` service identifier and tag the binding with the controller's name.
