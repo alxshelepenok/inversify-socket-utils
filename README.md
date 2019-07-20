@@ -4,7 +4,7 @@
 [![travisci build status](https://travis-ci.org/alxshelepenok/inversify-socket-utils.svg?branch=master)](https://travis-ci.org/alxshelepenok/inversify-socket-utils)
 [![npm version](https://badge.fury.io/js/inversify-socket-utils.svg)](https://badge.fury.io/js/inversify-socket-utils)
 
-Some utilities for the development of Socket IO applications with Inversify.
+Some utilities for the development of socket.io applications with Inversify.
 
 ## Installation
 
