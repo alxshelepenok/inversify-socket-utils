@@ -1,5 +1,5 @@
 import { injectable } from "inversify";
-import {Controller, Payload, ConnectedSocket, OnConnect, OnDisconnect, OnMessage} from "../../../src";
+import { Controller, Payload, ConnectedSocket, OnConnect, OnDisconnect, OnMessage } from "../../../src";
 import "reflect-metadata";
 
 @injectable()
