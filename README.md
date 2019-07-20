@@ -1,6 +1,5 @@
 # inversify-socket-utils
 
-<a target="_blank" href="https://circleci.com/gh/alxshelepenok/gatsby-starter-lumen"><img src="https://circleci.com/gh/alxshelepenok/gatsby-starter-lumen.svg?style=svg"></a>
 [![circleci build status](https://circleci.com/gh/alxshelepenok/inversify-socket-utils.svg?style=svg)](https://circleci.com/gh/alxshelepenok/inversify-socket-utils)
 [![travisci build status](https://travis-ci.org/alxshelepenok/inversify-socket-utils.svg?branch=master)](https://travis-ci.org/alxshelepenok/inversify-socket-utils)
 [![npm version](https://badge.fury.io/js/inversify-socket-utils.svg)](https://badge.fury.io/js/inversify-socket-utils)
