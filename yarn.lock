@@ -1378,9 +1378,9 @@ gulp-tslint@8.1.4:
     plugin-error "1.0.1"
     through "~2.3.8"
 
-gulp-typescript@5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/gulp-typescript/-/gulp-typescript-5.0.0.tgz#aac065a88bca95d1f960d4934a307feed2d091f8"
+gulp-typescript@5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/gulp-typescript/-/gulp-typescript-5.0.1.tgz#96c6565a6eb31e08c2aae1c857b1a079e6226d94"
   dependencies:
     ansi-colors "^3.0.5"
     plugin-error "^1.0.1"
