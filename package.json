@@ -48,7 +48,7 @@
     "gulp-mocha": "6.0.0",
     "gulp-sourcemaps": "2.6.5",
     "gulp-tslint": "8.1.4",
-    "gulp-typescript": "5.0.0",
+    "gulp-typescript": "5.0.1",
     "inversify": "5.0.1",
     "mocha": "5.2.0",
     "moq.ts": "2.8.5",
