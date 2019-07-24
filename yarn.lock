@@ -58,9 +58,9 @@
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/@sinonjs/text-encoding/-/text-encoding-0.7.1.tgz#8da5c6530915653f3a1f38fd5f101d8c3f8079c5"
 
-"@types/async@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@types/async/-/async-3.0.0.tgz#d403560ee2aabccdb7936cb9a3fee5f147d626bd"
+"@types/async@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@types/async/-/async-3.0.1.tgz#eb33247ffc23d904f9069a292c260c6324cb652c"
 
 "@types/bluebird@3.5.27":
   version "3.5.27"
