@@ -56,7 +56,7 @@
     "sinon": "7.4.2",
     "source-map-support": "0.5.13",
     "supertest": "4.0.2",
-    "tslint": "5.19.0",
+    "tslint": "5.20.0",
     "typescript": "3.6.2"
   },
   "dependencies": {
