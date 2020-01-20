@@ -57,7 +57,7 @@
     "source-map-support": "0.5.16",
     "supertest": "4.0.2",
     "tslint": "5.20.1",
-    "typescript": "3.7.4"
+    "typescript": "3.7.5"
   },
   "dependencies": {
     "http-status-codes": "^1.4.0",
