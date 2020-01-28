@@ -72,9 +72,9 @@
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/@sinonjs/text-encoding/-/text-encoding-0.7.1.tgz#8da5c6530915653f3a1f38fd5f101d8c3f8079c5"
 
-"@types/async@3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@types/async/-/async-3.0.5.tgz#e6fab3e12ffb7048085aafa49001574c35c6fbc0"
+"@types/async@3.0.7":
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/@types/async/-/async-3.0.7.tgz#ef2733a3d027a81cd86524d0650db55f5d8cdff6"
 
 "@types/bluebird@3.5.29":
   version "3.5.29"
@@ -424,9 +424,9 @@ async@1.x:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
-async@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/async/-/async-3.1.0.tgz#42b3b12ae1b74927b5217d8c0016baaf62463772"
+async@3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/async/-/async-3.1.1.tgz#dd3542db03de837979c9ebbca64ca01b06dc98df"
 
 asynckit@^0.4.0:
   version "0.4.0"
