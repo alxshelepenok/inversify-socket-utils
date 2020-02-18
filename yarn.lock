@@ -2311,11 +2311,9 @@ mocha@^6.2.0:
     yargs-parser "13.1.1"
     yargs-unparser "1.6.0"
 
-moq.ts@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/moq.ts/-/moq.ts-3.0.0.tgz#c09336cbc3bf72acec728a0ec6d569cabe5d55c8"
-  dependencies:
-    tslib "^1.9.0"
+moq.ts@5.0.4:
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/moq.ts/-/moq.ts-5.0.4.tgz#d7fdb774859e6aeb40c3975a7632269a34b96054"
 
 ms@2.0.0:
   version "2.0.0"
@@ -3467,7 +3465,7 @@ toidentifier@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
 
-tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
+tslib@^1.8.0, tslib@^1.8.1:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
 
