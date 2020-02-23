@@ -2318,9 +2318,9 @@ mocha@^6.2.0:
     yargs-parser "13.1.1"
     yargs-unparser "1.6.0"
 
-moq.ts@5.0.4:
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/moq.ts/-/moq.ts-5.0.4.tgz#d7fdb774859e6aeb40c3975a7632269a34b96054"
+moq.ts@5.0.5:
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/moq.ts/-/moq.ts-5.0.5.tgz#cb91d4e65a77ff6a6190a963841a7b42c4cfd3f3"
 
 ms@2.0.0:
   version "2.0.0"
