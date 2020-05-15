@@ -89,9 +89,9 @@
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@types/async/-/async-3.2.0.tgz#2bf5c62ca7f50efa77b74c971f1401a6db9ff938"
 
-"@types/bluebird@3.5.29":
-  version "3.5.29"
-  resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.5.29.tgz#7cd933c902c4fc83046517a1bef973886d00bdb6"
+"@types/bluebird@3.5.31":
+  version "3.5.31"
+  resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.5.31.tgz#d17fa0ec242b51c3db302481c557ce3813bf45cb"
 
 "@types/body-parser@*":
   version "1.17.0"
