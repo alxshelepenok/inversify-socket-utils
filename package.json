@@ -54,7 +54,7 @@
     "reflect-metadata": "0.1.13",
     "run-sequence": "2.2.1",
     "sinon": "9.0.2",
-    "source-map-support": "0.5.16",
+    "source-map-support": "0.5.19",
     "supertest": "4.0.2",
     "tslint": "5.20.1",
     "typescript": "3.8.3"
