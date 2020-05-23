@@ -2352,9 +2352,12 @@ mocha@^6.2.0:
     yargs-parser "13.1.1"
     yargs-unparser "1.6.0"
 
-moq.ts@5.0.5:
-  version "5.0.5"
-  resolved "https://registry.yarnpkg.com/moq.ts/-/moq.ts-5.0.5.tgz#cb91d4e65a77ff6a6190a963841a7b42c4cfd3f3"
+moq.ts@6.3.3:
+  version "6.3.3"
+  resolved "https://registry.yarnpkg.com/moq.ts/-/moq.ts-6.3.3.tgz#6f917c07f14cb5bcb27d94c2d8effcbeeb81474e"
+  integrity sha512-ShbMllYH7cOJ3+6XHyS5yv8T00MPMzFxWbqKLAie7/kBFEciE6x19ibgYKZysN0PTd6kCuc0RyebdaGinORTRQ==
+  dependencies:
+    tslib "^1.10.0"
 
 ms@2.0.0:
   version "2.0.0"
@@ -3505,6 +3508,11 @@ to-through@^2.0.0:
 toidentifier@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
+
+tslib@^1.10.0:
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.13.0.tgz#c881e13cc7015894ed914862d276436fa9a47043"
+  integrity sha512-i/6DQjL8Xf3be4K/E6Wgpekn5Qasl1usyw++dAA35Ue5orEn65VIxOA+YvNNl9HV3qv70T7CNwjODHZrLwvd1Q==
 
 tslib@^1.8.0, tslib@^1.8.1:
   version "1.10.0"
