@@ -29,7 +29,7 @@
     "@types/async": "3.2.3",
     "@types/bluebird": "3.5.32",
     "@types/body-parser": "1.19.0",
-    "@types/chai": "4.2.9",
+    "@types/chai": "4.2.12",
     "@types/cookie-parser": "1.4.2",
     "@types/mocha": "7.0.2",
     "@types/prettyjson": "0.0.29",
