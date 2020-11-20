@@ -23,7 +23,7 @@ Step 1: Create a controller.
 
 ```ts
 import { injectable } from "inversify";
-import { Controller, Payload, ConnectedSocket, OnConnect, OnDisconnect, OnMessage } from "../../../src";
+import { Controller, Payload, ConnectedSocket, OnConnect, OnDisconnect, OnMessage } from "inversify-socket-utils";
 import "reflect-metadata";
 
 @injectable()
@@ -63,7 +63,7 @@ In order for the InversifySocketServer to find your controllers, you must bind t
 import * as http from "http";
 import * as SocketIO from "socket.io";
 import { Container } from "inversify";
-import { Interfaces, InversifySocketServer, TYPE } from "../../src";
+import { Interfaces, InversifySocketServer, TYPE } from "inversify-socket-utils";
 import { MessageController } from "./controllers/message";
 
 let container = new Container();
@@ -72,7 +72,7 @@ container.bind<Interfaces.Controller>(TYPE.Controller).to(MessageController);
 
 let app = http.createServer();
 
-let io = SocketIO(app);
+let io = new SocketIO.Server(app);
 let server = new InversifySocketServer(container, io);
 server.build();
 
