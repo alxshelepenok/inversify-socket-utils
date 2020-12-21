@@ -2473,10 +2473,10 @@ mocha@^6.2.0:
     yargs-parser "13.1.1"
     yargs-unparser "1.6.0"
 
-moq.ts@6.5.0:
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/moq.ts/-/moq.ts-6.5.0.tgz#e68699e2e4a38d01e0f53d0b09061140103eaee1"
-  integrity sha512-F5/U5pa59wHWePCypb3LsnWbQHkfM4a/krblPMemhKCqajD95V7+W7C0cy29qms7qFigClsI2WOqA0tPYNCR5Q==
+moq.ts@7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/moq.ts/-/moq.ts-7.0.0.tgz#d46b362ab46398e01dee08e2ea203b581a14362a"
+  integrity sha512-bazZ13llLKeLNxZfFBEJ+K8v7VCfmV5XueL3mw7LreZRBQpiL0h8SVtKnj3B2dmsbm3bnUJW8FSVE8LklqHXJg==
   dependencies:
     tslib "2.0.3"
 
