@@ -33,7 +33,7 @@
     "@types/cookie-parser": "1.4.2",
     "@types/mocha": "8.2.0",
     "@types/prettyjson": "0.0.29",
-    "@types/sinon": "9.0.9",
+    "@types/sinon": "9.0.10",
     "@types/socket.io": "2.1.12",
     "@types/supertest": "2.0.10",
     "async": "3.2.0",
