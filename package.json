@@ -49,7 +49,7 @@
     "gulp-typescript": "5.0.1",
     "inversify": "5.0.5",
     "mocha": "8.2.1",
-    "moq.ts": "7.0.0",
+    "moq.ts": "7.2.0",
     "prettyjson": "1.2.1",
     "reflect-metadata": "0.1.13",
     "run-sequence": "2.2.1",
