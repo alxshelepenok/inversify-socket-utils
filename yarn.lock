@@ -2425,12 +2425,12 @@ mocha@^8.3.0:
     yargs-parser "20.2.4"
     yargs-unparser "2.0.0"
 
-moq.ts@7.2.0:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/moq.ts/-/moq.ts-7.2.0.tgz#bb15dee442caaa5851a4affea39be552258d5510"
-  integrity sha512-kd+6jGV/TkGbxRvZjeSr6gxC/f4X+XG+MQCAnRwyFbO1LCln8B8eGKg8bhT4Od9C4XG/t7tRGVMF9VCPoptcuQ==
+moq.ts@7.3.4:
+  version "7.3.4"
+  resolved "https://registry.yarnpkg.com/moq.ts/-/moq.ts-7.3.4.tgz#982c3b195a54fd58c7a40a84e37a870374d15927"
+  integrity sha512-rOelPx7ns+RzyliPwHH2wFVqGowITKRQtECLvVKhiIt4oM4r2hYq4AmgQh0NpWlMxWl2fuZtPJhikrhVpAoF5g==
   dependencies:
-    tslib "2.0.3"
+    tslib "2.1.0"
 
 ms@2.0.0:
   version "2.0.0"
@@ -3614,10 +3614,10 @@ toidentifier@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
 
-tslib@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
-  integrity sha512-uZtkfKblCEQtZKBF6EBXVZeQNl82yqtDQdv+eck8u7tdPxjLu2/lp5/uPW+um2tpuxINHWy3GhiccY7QgEaVHQ==
+tslib@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.1.0.tgz#da60860f1c2ecaa5703ab7d39bc05b6bf988b97a"
+  integrity sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A==
 
 tslib@^1.13.0:
   version "1.13.0"
