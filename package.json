@@ -31,7 +31,7 @@
     "@types/body-parser": "1.19.0",
     "@types/chai": "4.2.19",
     "@types/cookie-parser": "1.4.2",
-    "@types/mocha": "8.2.2",
+    "@types/mocha": "8.2.3",
     "@types/prettyjson": "0.0.29",
     "@types/sinon": "10.0.2",
     "@types/socket.io": "3.0.1",
