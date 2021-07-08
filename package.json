@@ -32,7 +32,7 @@
     "@types/chai": "4.2.21",
     "@types/cookie-parser": "1.4.2",
     "@types/mocha": "8.2.3",
-    "@types/prettyjson": "0.0.29",
+    "@types/prettyjson": "0.0.30",
     "@types/sinon": "10.0.2",
     "@types/socket.io": "3.0.1",
     "@types/supertest": "2.0.11",
