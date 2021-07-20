@@ -28,7 +28,7 @@
   "devDependencies": {
     "@types/async": "3.2.7",
     "@types/bluebird": "3.5.36",
-    "@types/body-parser": "1.19.0",
+    "@types/body-parser": "1.19.1",
     "@types/chai": "4.2.21",
     "@types/cookie-parser": "1.4.2",
     "@types/mocha": "8.2.3",
