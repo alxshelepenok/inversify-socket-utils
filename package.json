@@ -47,7 +47,7 @@
     "gulp-sourcemaps": "3.0.0",
     "gulp-tslint": "8.1.4",
     "gulp-typescript": "5.0.1",
-    "inversify": "5.1.1",
+    "inversify": "6.0.1",
     "mocha": "9.0.2",
     "moq.ts": "7.3.4",
     "prettyjson": "1.2.1",
