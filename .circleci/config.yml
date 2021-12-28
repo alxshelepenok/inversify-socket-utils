@@ -2,7 +2,7 @@ version: 2
 
 defaults: &defaults
   docker:
-    - image: circleci/node:16.5.0
+    - image: circleci/node:16.13.1
   working_directory: ~/inversify-socket-utils
 
 jobs:
