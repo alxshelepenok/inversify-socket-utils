@@ -82,10 +82,10 @@
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/@sinonjs/text-encoding/-/text-encoding-0.7.1.tgz#8da5c6530915653f3a1f38fd5f101d8c3f8079c5"
 
-"@types/async@3.2.7":
-  version "3.2.7"
-  resolved "https://registry.yarnpkg.com/@types/async/-/async-3.2.7.tgz#f784478440d313941e7b12c2e4db53b0ed55637b"
-  integrity sha512-a+MBBfOTs3ShFMlbH9qsRVFkjIUunEtxrBT0gxRx1cntjKRg2WApuGmNYzHkwKaIhMi3SMbKktaD/rLObQMwIw==
+"@types/async@3.2.13":
+  version "3.2.13"
+  resolved "https://registry.yarnpkg.com/@types/async/-/async-3.2.13.tgz#ec023074c70180d17cbc9117ddc3cec2f3894ea4"
+  integrity sha512-7Q3awrhnvm89OzfsmqeqRQh8mh+8Pxfgq1UvSAn2nWQ5y/F3+NrbIF0RbkWq8+5dY99ozgap2b3DNBNwjLVOxw==
 
 "@types/bluebird@3.5.36":
   version "3.5.36"
@@ -510,10 +510,10 @@ async@1.x:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
-async@3.2.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/async/-/async-3.2.2.tgz#2eb7671034bb2194d45d30e31e24ec7e7f9670cd"
-  integrity sha512-H0E+qZaDEfx/FY4t7iLRv1W2fFI6+pyCeTw1uN20AQPiwqwM6ojPxHxdLv4z8hi2DtnW9BOckSspLucW7pIE5g==
+async@3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/async/-/async-3.2.3.tgz#ac53dafd3f4720ee9e8a160628f18ea91df196c9"
+  integrity sha512-spZRyzKL5l5BZQrr/6m/SqFdBN0q3OCI0f9rjfBzCMBIP4p75P620rR3gTmaksNOhmzgdxcaxdNfMy6anrbM0g==
 
 asynckit@^0.4.0:
   version "0.4.0"
