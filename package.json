@@ -28,6 +28,7 @@
     "lint:commit": "commitlint --edit",
     "lint:staged": "lint-staged",
     "lint:ts": "eslint . --ext .ts && prettier --check .",
+    "prepare": "husky install",
     "semantic-release": "semantic-release",
     "start": "ts-node -r tsconfig-paths/register examples/basic/server.ts",
     "test": "jest --runInBand --passWithNoTests --config internal/testing/jest-config.ts"
