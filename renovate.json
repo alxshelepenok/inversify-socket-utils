@@ -13,6 +13,10 @@
     {
       "packagePatterns": ["^eslint"],
       "groupName": "eslint"
+    },
+    {
+      "packagePatterns": ["^jest", "@types/jest"],
+      "groupName": "jest"
     }
   ],
   "labels": ["renovate"],
