@@ -69,7 +69,11 @@ import { Container } from "inversify";
 import { Server } from "socket.io";
 
 import { MessageController } from "./controllers/message";
-import { interfaces, InversifySocketServer, TYPE } from "inversify-socket-utils";
+import {
+  interfaces,
+  InversifySocketServer,
+  TYPE,
+} from "inversify-socket-utils";
 
 const container = new Container();
 

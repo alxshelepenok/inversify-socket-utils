@@ -23,7 +23,7 @@
     "build": "npm run clean && tsc && rollup -c internal/rollup/rollup-config.ts",
     "clean": "rimraf target",
     "format": "npm run format:ts",
-    "format:ts": "eslint . --ext ,.ts --fix && prettier --write .",
+    "format:ts": "eslint . --ext .ts --fix && prettier --write .",
     "lint": "npm run lint:ts",
     "lint:commit": "commitlint --edit",
     "lint:staged": "lint-staged",
