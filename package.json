@@ -7,9 +7,6 @@
     "socket.io"
   ],
   "homepage": "https://github.com/alxshelepenok/inversify-socket-utils",
-  "bugs": {
-    "url": "https://github.com/alxshelepenok/inversify-socket-utils/issues"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alxshelepenok/inversify-socket-utils.git"
