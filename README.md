@@ -1,7 +1,6 @@
 # inversify-socket-utils
 
 [![circleci build status](https://circleci.com/gh/alxshelepenok/inversify-socket-utils.svg?style=svg)](https://circleci.com/gh/alxshelepenok/inversify-socket-utils)
-[![npm version](https://badge.fury.io/js/inversify-socket-utils.svg)](https://badge.fury.io/js/inversify-socket-utils)
 
 Some utilities for the development of socket.io applications with Inversify.
 
