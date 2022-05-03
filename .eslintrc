@@ -28,8 +28,6 @@
         "devDependencies": [
           "**/test.ts",
           "**/*.test.ts",
-          "**/test.tsx",
-          "**/tests.tsx",
           "internal/**/*.ts",
           "examples/**/*.ts"
         ]

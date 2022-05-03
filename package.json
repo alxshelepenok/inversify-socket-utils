@@ -23,11 +23,11 @@
     "build": "npm run clean && tsc && rollup -c internal/rollup/rollup-config.ts",
     "clean": "rimraf target",
     "format": "npm run format:ts",
-    "format:ts": "eslint . --ext .tsx,.ts --fix && prettier --write .",
+    "format:ts": "eslint . --ext ,.ts --fix && prettier --write .",
     "lint": "npm run lint:ts",
     "lint:commit": "commitlint --edit",
     "lint:staged": "lint-staged",
-    "lint:ts": "eslint . --ext .tsx,.ts && prettier --check .",
+    "lint:ts": "eslint . --ext .ts && prettier --check .",
     "semantic-release": "semantic-release",
     "start": "ts-node -r tsconfig-paths/register examples/basic/server.ts",
     "test": "jest --runInBand --passWithNoTests --config internal/testing/jest-config.ts"

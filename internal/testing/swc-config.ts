@@ -2,7 +2,6 @@ const config = {
   jsc: {
     parser: {
       syntax: "typescript",
-      tsx: true,
     },
     transform: {
       react: {
