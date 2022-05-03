@@ -9,6 +9,12 @@
     ":automergeTesters",
     ":automergeTypes"
   ],
+  "packageRules": [
+    {
+      "packagePatterns": ["^eslint"],
+      "groupName": "eslint"
+    }
+  ],
   "labels": ["renovate"],
   "prHourlyLimit": 4,
   "prConcurrentLimit": 16,
