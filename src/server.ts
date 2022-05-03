@@ -1,14 +1,21 @@
 import "reflect-metadata";
+
 import * as inversify from "inversify";
-import { Interfaces } from "./interfaces";
-import { TYPE, ACTION_TYPE, PARAMETER_TYPE } from "./constants";
-import { getControllerMetadata, getActionMetadata, getParameterMetadata, getControllersFromContainer } from "./utils";
-import { Controller } from "./decorators";
 import * as SocketIO from "socket.io";
+
+import { ACTION_TYPE, PARAMETER_TYPE, TYPE } from "./constants";
+import * as interfaces from "./interfaces";
+import {
+  getActionMetadata,
+  getControllerMetadata,
+  getControllersFromContainer,
+  getParameterMetadata,
+} from "./utils";
 
 export class InversifySocketServer {
   public server: SocketIO.Server;
-  private container: inversify.Container;
+
+  private readonly container: inversify.Container;
 
   constructor(container: inversify.Container, server: SocketIO.Server) {
     this.container = container;
@@ -24,78 +31,118 @@ export class InversifySocketServer {
   private registerControllers() {
     const controllers = getControllersFromContainer(this.container, false);
 
-    controllers.forEach((controller: Interfaces.Controller) => {
+    controllers.forEach((controller: interfaces.Controller) => {
       const controllerMetadata = getControllerMetadata(controller.constructor);
       const actionMetadata = getActionMetadata(controller.constructor);
       const parameterMetadata = getParameterMetadata(controller.constructor);
 
       if (controllerMetadata && actionMetadata) {
-        this.server.of(controllerMetadata.namespace).on("connection", (socket: any) => {
-          this.handleConnection(socket, controllerMetadata, actionMetadata, parameterMetadata);
+        this.server
+          .of(controllerMetadata.namespace)
+          .on("connection", (socket) => {
+            this.handleConnection(
+              socket,
+              controllerMetadata,
+              actionMetadata,
+              parameterMetadata,
+            );
+          });
+      }
+    });
+  }
+
+  private handleConnection(
+    socket: SocketIO.Socket,
+    controllerMetadata: interfaces.ControllerMetadata,
+    actionMetadata: Array<interfaces.ControllerActionMetadata>,
+    parameterMetadata: interfaces.ControllerParameterMetadata,
+  ) {
+    actionMetadata.forEach((metadata: interfaces.ControllerActionMetadata) => {
+      if (metadata.type === ACTION_TYPE.CONNECT) {
+        this.handleAction(
+          socket,
+          controllerMetadata,
+          metadata,
+          parameterMetadata,
+        );
+      }
+
+      if (metadata.type === ACTION_TYPE.DISCONNECT) {
+        socket.on("disconnect", () => {
+          this.handleAction(
+            socket,
+            controllerMetadata,
+            metadata,
+            parameterMetadata,
+          );
+        });
+      }
+
+      if (metadata.type === ACTION_TYPE.MESSAGE) {
+        socket.on(metadata.name, (payload) => {
+          this.handleAction(
+            socket,
+            controllerMetadata,
+            metadata,
+            parameterMetadata,
+            payload,
+          );
         });
       }
     });
   }
 
-  private handleConnection(socket: any, controllerMetadata: Interfaces.ControllerMetadata,
-    actionMetadata: Interfaces.ControllerActionMetadata[], parameterMetadata: Interfaces.ControllerParameterMetadata) {
-    actionMetadata.forEach((metadata: Interfaces.ControllerActionMetadata) => {
-      switch (metadata.type) {
-        case ACTION_TYPE.CONNECT:
-          this.handleAction(socket, controllerMetadata, metadata, parameterMetadata);
-          break;
-        case ACTION_TYPE.DISCONNECT:
-          socket.on("disconnect", () => {
-              this.handleAction(socket, controllerMetadata, metadata, parameterMetadata);
-          });
-          break;
-        case ACTION_TYPE.MESSAGE:
-          socket.on(metadata.name, (payload: any) => {
-              this.handleAction(socket, controllerMetadata, metadata, parameterMetadata, payload);
-          });
-          break;
-       }
-    });
-  }
-
-  private handleAction(socket: any, controller: Interfaces.ControllerMetadata, action: Interfaces.ControllerActionMetadata,
-    parameters: Interfaces.ControllerParameterMetadata, payload?: any) {
-    let paramList: Interfaces.ParameterMetadata[] = [];
+  private handleAction(
+    socket: SocketIO.Socket,
+    controller: interfaces.ControllerMetadata,
+    action: interfaces.ControllerActionMetadata,
+    parameters: interfaces.ControllerParameterMetadata,
+    payload?: unknown,
+  ) {
+    let paramList: interfaces.ParameterMetadata[] = [];
     if (parameters) {
       paramList = parameters[action.key] || [];
     }
 
     const args = this.extractParams(socket, payload, paramList);
-    (this.container.getNamed(TYPE.Controller, controller.target.name) as any)[action.key](...args);
+    (
+      this.container.getNamed<interfaces.Controller>(
+        TYPE.Controller,
+        (controller.target as { name: string }).name,
+      ) as Record<string, (...a: Array<unknown>) => unknown>
+    )[action.key](...args);
   }
 
-  private extractParams(socket: any, payload: any, params: Interfaces.ParameterMetadata[]): any[] {
-    const args: any[] = [];
+  private extractParams(
+    socket: SocketIO.Socket,
+    payload: unknown,
+    params: Array<interfaces.ParameterMetadata>,
+  ) {
+    const args: Array<unknown> = [];
 
-    params.forEach(({type, index, name}) => {
+    params.forEach(({ type, index, name }) => {
       switch (type) {
         case PARAMETER_TYPE.CONNECTED_SOCKET:
           args[index] = socket;
-          break;
+          return;
         case PARAMETER_TYPE.SOCKET_IO:
           args[index] = this.server;
-          break;
+          return;
         case PARAMETER_TYPE.SOCKET_QUERY_PARAM:
           args[index] = socket.handshake.query[name];
-          break;
+          return;
         case PARAMETER_TYPE.SOCKET_ID:
           args[index] = socket.id;
-          break;
+          return;
         case PARAMETER_TYPE.SOCKET_REQUEST:
           args[index] = socket.request;
-          break;
+          return;
         case PARAMETER_TYPE.SOCKET_ROOMS:
           args[index] = socket.rooms;
-          break;
+          return;
         default:
           args[index] = payload;
-          break;
-        }
+      }
     });
 
     return args;

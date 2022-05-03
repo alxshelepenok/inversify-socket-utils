@@ -21,32 +21,38 @@ Please refer to the [InversifyJS documentation](https://github.com/inversify/Inv
 Step 1: Create a controller.
 
 ```ts
-import { injectable } from "inversify";
-import { Controller, Payload, ConnectedSocket, OnConnect, OnDisconnect, OnMessage } from "inversify-socket-utils";
 import "reflect-metadata";
 
+import { injectable } from "inversify";
+import { Socket } from "socket.io";
+
+import {
+  connectedSocket,
+  controller,
+  onConnect,
+  onDisconnect,
+  onMessage,
+} from "@/src";
+
 @injectable()
-@Controller(
-  '/namespace'
-)
+@controller("/namespace")
 export class MessageController {
-  @OnConnect("connection")
-    connection() {
-      console.log("Client connected");
-    }
+  @onConnect("connection")
+  connection() {
+    console.log("client connected");
+  }
 
-    @OnDisconnect("disconnect")
-    disconnect() {
-      console.log("Client disconnected");
-    }
+  @onDisconnect("disconnect")
+  disconnect() {
+    console.log("client disconnected");
+  }
 
-    @OnMessage("message")
-    message(@Payload() payload: any, @ConnectedSocket() socket: any) {
-      console.log("Message received");
-      socket.emit("message", "Hello!");
-    }
+  @onMessage("message")
+  message(@connectedSocket() socket: Socket) {
+    console.log("message received");
+    socket.emit("message", "hello!");
+  }
 }
-
 ```
 
 Step 2: Configure container and server.
@@ -59,32 +65,38 @@ Then just call server.build() to prepare your app.
 In order for the InversifySocketServer to find your controllers, you must bind them to the `TYPE.Controller` service identifier and tag the binding with the controller's name.
 
 ```ts
-import * as http from "http";
-import * as SocketIO from "socket.io";
+import { createServer } from "http";
 import { Container } from "inversify";
-import { Interfaces, InversifySocketServer, TYPE } from "inversify-socket-utils";
+import { Server } from "socket.io";
+
 import { MessageController } from "./controllers/message";
+import { interfaces, InversifySocketServer, TYPE } from "@/src";
 
-let container = new Container();
+const container = new Container();
 
-container.bind<Interfaces.Controller>(TYPE.Controller).to(MessageController);
+container.bind<interfaces.Controller>(TYPE.Controller).to(MessageController);
 
-let app = http.createServer();
+const app = createServer();
 
-let io = new SocketIO.Server(app);
-let server = new InversifySocketServer(container, io);
+const io = new Server(app, {
+  cors: {
+    origin: "*",
+  },
+});
+
+const server = new InversifySocketServer(container, io);
 server.build();
 
 app.listen(3000);
-console.log(`Server is listening on port 3000`);
 
+console.log("Server is listening on port 3000");
 ```
 
 ## License
 
 The MIT License (MIT)
 
-Copyright (c) 2019 Alexander Shelepenok
+Copyright (c) 2019-2022 Alexander Shelepenok
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

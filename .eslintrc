@@ -1,0 +1,63 @@
+{
+  "env": {
+    "node": true,
+    "jasmine": true
+  },
+  "extends": [
+    "@alxshelepenok/eslint-config",
+    "plugin:import/typescript",
+    "plugin:import/errors",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "simple-import-sort"
+  ],
+  "rules": {
+    "no-shadow": "off",
+    "no-console": "off",
+    "max-params": ["error", 5],
+    "class-methods-use-this": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/test.ts",
+          "**/*.test.ts",
+          "**/test.tsx",
+          "**/tests.tsx",
+          "internal/**/*.ts",
+          "examples/**/*.ts"
+        ]
+      }
+    ],
+    "no-restricted-properties": ["off"],
+    "import/no-internal-modules": ["off"],
+    "@typescript-eslint/no-use-before-define": ["off"],
+    "@typescript-eslint/quotes": ["error", "double"],
+    "@typescript-eslint/no-shadow": ["error"],
+    "@typescript-eslint/naming-convention": ["error", {
+      "format": ["camelCase", "UPPER_CASE", "PascalCase"],
+      "selector": "parameter",
+      "leadingUnderscore": "allow"
+    }],
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          ["reflect-metadata"],
+          ["^@?\\w"]
+        ]
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  }
+}

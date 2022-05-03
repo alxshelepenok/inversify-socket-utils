@@ -1,15 +1,33 @@
 import { TYPE } from "./constants";
-import { Interfaces } from "./interfaces";
-import { Controller, OnConnect, OnDisconnect, OnMessage, Payload,
-  SocketID, SocketIO, ConnectedSocket, SocketRequest,
-  SocketRooms, SocketQueryParam } from "./decorators";
+import {
+  connectedSocket,
+  controller,
+  onConnect,
+  onDisconnect,
+  onMessage,
+  payload,
+  socketID,
+  socketIO,
+  socketQueryParam,
+  socketRequest,
+  socketRooms,
+} from "./decorators";
+import * as interfaces from "./interfaces";
 import { InversifySocketServer } from "./server";
 
 export {
   TYPE,
-  Interfaces,
-  Controller, OnConnect, OnMessage, OnDisconnect,
-  Payload, SocketIO, SocketRequest, SocketQueryParam,
-  SocketID, ConnectedSocket, SocketRooms,
-  InversifySocketServer
+  interfaces,
+  controller,
+  onConnect,
+  onMessage,
+  onDisconnect,
+  payload,
+  socketIO,
+  socketRequest,
+  socketQueryParam,
+  socketID,
+  connectedSocket,
+  socketRooms,
+  InversifySocketServer,
 };

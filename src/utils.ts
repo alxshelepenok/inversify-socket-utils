@@ -1,62 +1,42 @@
 import "reflect-metadata";
+
 import { interfaces as inversifyInterfaces } from "inversify";
-import { METADATA_KEY, NO_CONTROLLERS_FOUND } from "./constants";
-import { Interfaces } from "./interfaces";
-import { TYPE } from "./constants";
 
-export function getControllersFromContainer(
+import { METADATA_KEY, NO_CONTROLLERS_FOUND, TYPE } from "./constants";
+import * as interfaces from "./interfaces";
+
+export const getControllersFromContainer = (
   container: inversifyInterfaces.Container,
-  forceControllers: boolean
-) {
+  forceControllers: boolean,
+) => {
   if (container.isBound(TYPE.Controller)) {
-      return container.getAll<Interfaces.Controller>(TYPE.Controller);
+    return container.getAll<interfaces.Controller>(TYPE.Controller);
   } else if (forceControllers) {
-      throw new Error(NO_CONTROLLERS_FOUND);
+    throw new Error(NO_CONTROLLERS_FOUND);
   } else {
-      return [];
+    return [];
   }
-}
+};
 
-export function getControllersFromMetadata() {
-  const arrayOfControllerMetadata: Interfaces.ControllerMetadata[] = Reflect.getMetadata(
+export const getControllerMetadata = (constructor: Object) => {
+  const controllerMetadata: interfaces.ControllerMetadata = Reflect.getMetadata(
     METADATA_KEY.Controller,
-    Reflect
-  ) || [];
-
-  return arrayOfControllerMetadata.map((metadata) => metadata.target);
-}
-
-export function getControllerMetadata(constructor: any) {
-  const controllerMetadata: Interfaces.ControllerMetadata = Reflect.getMetadata(
-    METADATA_KEY.Controller,
-    constructor
+    constructor,
   );
 
   return controllerMetadata;
-}
+};
 
-export function getActionMetadata(constructor: any) {
-  const actionMetadata: Interfaces.ControllerActionMetadata[] = Reflect.getMetadata(
-    METADATA_KEY.Action,
-    constructor
-  );
+export const getActionMetadata = (constructor: Object) => {
+  const actionMetadata: interfaces.ControllerActionMetadata[] =
+    Reflect.getMetadata(METADATA_KEY.Action, constructor);
 
   return actionMetadata;
-}
+};
 
-export function getParameterMetadata(constructor: any) {
-  const parameterMetadata: Interfaces.ControllerParameterMetadata = Reflect.getMetadata(
-    METADATA_KEY.Parameter,
-    constructor
-  );
+export const getParameterMetadata = (constructor: Object) => {
+  const parameterMetadata: interfaces.ControllerParameterMetadata =
+    Reflect.getMetadata(METADATA_KEY.Parameter, constructor);
 
   return parameterMetadata;
-}
-
-export function cleanUpMetadata() {
-  Reflect.defineMetadata(
-    METADATA_KEY.Controller,
-    [],
-    Reflect
-  );
-}
+};

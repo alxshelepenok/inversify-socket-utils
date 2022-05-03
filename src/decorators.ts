@@ -1,131 +1,179 @@
 import "reflect-metadata";
-import { inject, injectable, decorate } from "inversify";
-import { METADATA_KEY, TYPE, ACTION_TYPE, PARAMETER_TYPE } from "./constants";
-import { Interfaces } from "./interfaces";
 
-export function Controller(namespace: string) {
-  return function (target: any) {
-    const currentMetadata: Interfaces.ControllerMetadata = {
-      namespace: namespace,
-      target: target
+import { ACTION_TYPE, METADATA_KEY, PARAMETER_TYPE } from "./constants";
+import * as interfaces from "./interfaces";
+
+export const controller =
+  (namespace: string) =>
+  (target: NewableFunction): void => {
+    const currentMetadata: interfaces.ControllerMetadata = {
+      namespace,
+      target,
     };
 
     Reflect.defineMetadata(METADATA_KEY.Controller, currentMetadata, target);
 
-    const previousMetadata: Interfaces.ControllerMetadata[] = Reflect.getMetadata(
-      METADATA_KEY.Controller,
-      Reflect
-    ) || [];
+    const previousMetadata: Array<interfaces.ControllerMetadata> =
+      Reflect.getMetadata(METADATA_KEY.Controller, Reflect) || [];
 
     const newMetadata = [currentMetadata, ...previousMetadata];
 
-    Reflect.defineMetadata(
-      METADATA_KEY.Controller,
-      newMetadata,
-      Reflect
-    );
+    Reflect.defineMetadata(METADATA_KEY.Controller, newMetadata, Reflect);
   };
-}
 
-export function OnConnect(name: string): Interfaces.ActionDecorator {
-  return function (target: any, key: string) {
-    const metadata: Interfaces.ControllerActionMetadata = {
-      key: key,
-      name: name,
+export const onConnect =
+  (name: string): interfaces.ActionDecorator =>
+  (target: interfaces.DecoratorTarget, key: string): void => {
+    const metadata: interfaces.ControllerActionMetadata = {
+      key,
+      name,
+      target,
       type: ACTION_TYPE.CONNECT,
-      target: target
     };
 
-    let metadataList: Interfaces.ControllerActionMetadata[] = [];
+    let metadataList: interfaces.ControllerActionMetadata[] = [];
 
-    if (!Reflect.hasMetadata(METADATA_KEY.Action, target.constructor)) {
-      Reflect.defineMetadata(METADATA_KEY.Action, metadataList, target.constructor);
+    if (Reflect.hasMetadata(METADATA_KEY.Action, target.constructor)) {
+      metadataList = Reflect.getMetadata(
+        METADATA_KEY.Action,
+        target.constructor,
+      );
     } else {
-      metadataList = Reflect.getMetadata(METADATA_KEY.Action, target.constructor);
+      Reflect.defineMetadata(
+        METADATA_KEY.Action,
+        metadataList,
+        target.constructor,
+      );
     }
 
     metadataList.push(metadata);
   };
-}
 
-export function OnDisconnect(name: string): Interfaces.ActionDecorator {
-  return function (target: any, key: string) {
-    const metadata: Interfaces.ControllerActionMetadata = {
-      key: key,
-      name: name,
+export const onDisconnect =
+  (name: string): interfaces.ActionDecorator =>
+  (target: interfaces.DecoratorTarget, key: string) => {
+    const metadata: interfaces.ControllerActionMetadata = {
+      key,
+      name,
+      target,
       type: ACTION_TYPE.DISCONNECT,
-      target: target
     };
 
-    let metadataList: Interfaces.ControllerActionMetadata[] = [];
+    let metadataList: interfaces.ControllerActionMetadata[] = [];
 
-    if (!Reflect.hasMetadata(METADATA_KEY.Action, target.constructor)) {
-      Reflect.defineMetadata(METADATA_KEY.Action, metadataList, target.constructor);
+    if (Reflect.hasMetadata(METADATA_KEY.Action, target.constructor)) {
+      metadataList = Reflect.getMetadata(
+        METADATA_KEY.Action,
+        target.constructor,
+      );
     } else {
-      metadataList = Reflect.getMetadata(METADATA_KEY.Action, target.constructor);
+      Reflect.defineMetadata(
+        METADATA_KEY.Action,
+        metadataList,
+        target.constructor,
+      );
     }
 
     metadataList.push(metadata);
   };
-}
 
-export function OnMessage(name: string): Interfaces.ActionDecorator {
-  return function (target: any, key: string) {
-    const metadata: Interfaces.ControllerActionMetadata = {
-      key: key,
-      name: name,
+export const onMessage =
+  (name: string): interfaces.ActionDecorator =>
+  (target: interfaces.DecoratorTarget, key: string) => {
+    const metadata: interfaces.ControllerActionMetadata = {
+      key,
+      name,
+      target,
       type: ACTION_TYPE.MESSAGE,
-      target: target
     };
 
-    let metadataList: Interfaces.ControllerActionMetadata[] = [];
+    let metadataList: interfaces.ControllerActionMetadata[] = [];
 
-    if (!Reflect.hasMetadata(METADATA_KEY.Action, target.constructor)) {
-      Reflect.defineMetadata(METADATA_KEY.Action, metadataList, target.constructor);
+    if (Reflect.hasMetadata(METADATA_KEY.Action, target.constructor)) {
+      metadataList = Reflect.getMetadata(
+        METADATA_KEY.Action,
+        target.constructor,
+      );
     } else {
-      metadataList = Reflect.getMetadata(METADATA_KEY.Action, target.constructor);
+      Reflect.defineMetadata(
+        METADATA_KEY.Action,
+        metadataList,
+        target.constructor,
+      );
     }
 
     metadataList.push(metadata);
   };
-}
 
-export const SocketIO: () => ParameterDecorator = paramDecoratorFactory(PARAMETER_TYPE.SOCKET_IO);
-export const SocketID: () => ParameterDecorator = paramDecoratorFactory(PARAMETER_TYPE.SOCKET_ID);
-export const ConnectedSocket: () => ParameterDecorator = paramDecoratorFactory(PARAMETER_TYPE.CONNECTED_SOCKET);
-export const Payload: () => ParameterDecorator = paramDecoratorFactory(PARAMETER_TYPE.SOCKET_BODY);
-export const SocketQueryParam: (name: string) => ParameterDecorator = paramDecoratorFactory(PARAMETER_TYPE.SOCKET_QUERY_PARAM);
-export const SocketRequest: () => ParameterDecorator = paramDecoratorFactory(PARAMETER_TYPE.SOCKET_REQUEST);
-export const SocketRooms: () => ParameterDecorator = paramDecoratorFactory(PARAMETER_TYPE.SOCKET_ROOMS);
-
-function paramDecoratorFactory(parameterType: PARAMETER_TYPE): (name?: string) => ParameterDecorator {
-  return function (name?: string): ParameterDecorator {
-    name = name || "default";
-    return params(parameterType, name);
-  };
-}
-
-export function params(type: PARAMETER_TYPE, name: string) {
-  return function (target: Object, methodName: string, index: number) {
-    let metadataList: Interfaces.ControllerParameterMetadata = {};
-    let parameterMetadataList: Interfaces.ParameterMetadata[] = [];
-    const parameterMetadata: Interfaces.ParameterMetadata = {
+export const params =
+  (type: PARAMETER_TYPE, name: string) =>
+  (
+    target: unknown | interfaces.Controller,
+    methodName: string | symbol,
+    index: number,
+  ) => {
+    let metadataList: interfaces.ControllerParameterMetadata = {};
+    let parameterMetadataList: interfaces.ParameterMetadata[] = [];
+    const parameterMetadata: interfaces.ParameterMetadata = {
       index: index,
       name: name,
-      type: type
+      type: type,
     };
 
-    if (!Reflect.hasMetadata(METADATA_KEY.Parameter, target.constructor)) {
+    if (
+      Reflect.hasMetadata(
+        METADATA_KEY.Parameter,
+        (target as interfaces.Controller).constructor,
+      )
+    ) {
+      metadataList = Reflect.getMetadata(
+        METADATA_KEY.Parameter,
+        (target as interfaces.Controller).constructor,
+      );
+      if (Object.prototype.hasOwnProperty.call(metadataList, methodName)) {
+        parameterMetadataList = metadataList[methodName as string];
+      }
       parameterMetadataList.unshift(parameterMetadata);
     } else {
-      metadataList = Reflect.getMetadata(METADATA_KEY.Parameter, target.constructor);
-      if (metadataList.hasOwnProperty(methodName)) {
-        parameterMetadataList = metadataList[methodName];
-      }
       parameterMetadataList.unshift(parameterMetadata);
     }
 
-    metadataList[methodName] = parameterMetadataList;
-    Reflect.defineMetadata(METADATA_KEY.Parameter, metadataList, target.constructor);
+    metadataList[methodName as string] = parameterMetadataList;
+    Reflect.defineMetadata(
+      METADATA_KEY.Parameter,
+      metadataList,
+      (target as interfaces.Controller).constructor,
+    );
   };
-}
+
+const paramDecoratorFactory =
+  (parameterType: PARAMETER_TYPE): ((name?: string) => ParameterDecorator) =>
+  (name?: string): ParameterDecorator =>
+    params(parameterType, name || "default");
+
+export const socketIO: () => ParameterDecorator = paramDecoratorFactory(
+  PARAMETER_TYPE.SOCKET_IO,
+);
+
+export const socketID: () => ParameterDecorator = paramDecoratorFactory(
+  PARAMETER_TYPE.SOCKET_ID,
+);
+
+export const connectedSocket: () => ParameterDecorator = paramDecoratorFactory(
+  PARAMETER_TYPE.CONNECTED_SOCKET,
+);
+
+export const payload: () => ParameterDecorator = paramDecoratorFactory(
+  PARAMETER_TYPE.SOCKET_BODY,
+);
+
+export const socketQueryParam: (name: string) => ParameterDecorator =
+  paramDecoratorFactory(PARAMETER_TYPE.SOCKET_QUERY_PARAM);
+
+export const socketRequest: () => ParameterDecorator = paramDecoratorFactory(
+  PARAMETER_TYPE.SOCKET_REQUEST,
+);
+
+export const socketRooms: () => ParameterDecorator = paramDecoratorFactory(
+  PARAMETER_TYPE.SOCKET_ROOMS,
+);
