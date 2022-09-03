@@ -80,7 +80,7 @@
     "prettier": "2.7.1",
     "prettier-plugin-packagejson": "2.2.18",
     "rimraf": "3.0.2",
-    "rollup": "^2.77.3",
+    "rollup": "^2.79.0",
     "semantic-release": "^19.0.5",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.0.0",
