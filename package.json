@@ -50,8 +50,8 @@
   },
   "devDependencies": {
     "@alxshelepenok/eslint-config": "^1.0.96",
-    "@commitlint/cli": "^17.0.3",
-    "@commitlint/config-conventional": "^17.0.3",
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
     "@jest/types": "^28.1.3",
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-json": "^4.1.0",
