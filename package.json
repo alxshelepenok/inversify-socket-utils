@@ -52,7 +52,7 @@
     "@alxshelepenok/eslint-config": "^1.0.103",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
-    "@jest/types": "^29.1.0",
+    "@jest/types": "^29.1.2",
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^14.1.0",
