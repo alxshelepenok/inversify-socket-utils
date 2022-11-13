@@ -15,6 +15,10 @@
     {
       "packagePatterns": ["^jest", "@types/jest"],
       "groupName": "jest"
+    },
+    {
+      "packagePatterns": ["^rollup", "^@rollup"],
+      "groupName": "rollup"
     }
   ],
   "labels": ["renovate"],
