@@ -49,7 +49,7 @@
     "socket.io": "^4.5.3"
   },
   "devDependencies": {
-    "@alxshelepenok/eslint-config": "^1.0.126",
+    "@alxshelepenok/eslint-config": "^1.0.127",
     "@commitlint/cli": "^17.2.0",
     "@commitlint/config-conventional": "^17.2.0",
     "@jest/types": "^29.3.1",
