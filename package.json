@@ -84,6 +84,6 @@
     "semantic-release": "^19.0.5",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.1",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.4"
   }
 }
