@@ -99,7 +99,7 @@ console.log("Server is listening on port 3000");
 
 The MIT License (MIT)
 
-Copyright (c) 2019-2022 Alexander Shelepenok
+Copyright (c) 2023 Alexander Shelepenok
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
