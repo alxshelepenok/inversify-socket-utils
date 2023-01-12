@@ -113,7 +113,13 @@ export class InversifySocketServer {
         (controller.target as { name: string }).name,
       ) as Record<string, (...a: Array<unknown>) => unknown>
     )[action.key](...args);
-    if(cb) cb(result);
+    if(cb) {
+      if(result instanceof Promise){
+        result.then(cb)
+      } else {
+        cb(result);
+      }
+    }
   }
 
   private extractParams(
