@@ -31,6 +31,8 @@ import {
   onConnect,
   onDisconnect,
   onMessage,
+  payload,
+  messageCallback
 } from "inversify-socket-utils";
 
 @injectable()
@@ -50,6 +52,23 @@ export class MessageController {
   message(@connectedSocket() socket: Socket) {
     console.log("message received");
     socket.emit("message", "hello!");
+  }
+  
+  @onMessage("custom-event")
+  customEvent(@payload() payload: any[]) {
+    console.log("payload", payload);
+  }
+  
+  @onMessage("get-info")
+  getInfo(@payload() payload: any[]) {
+    console.log("payload", payload);
+    return "info";
+  }
+  
+  @onMessage("get-more-info")
+  getMoreInfo(@payload() payload: any[], @messageCallback() cb: function) {
+    console.log("payload", payload);
+    cb("info 1","info 2", "info 3");
   }
 }
 ```
