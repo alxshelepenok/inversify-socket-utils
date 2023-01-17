@@ -1,6 +1,6 @@
 {
   "name": "inversify-socket-utils",
-  "version": "1.0.431",
+  "version": "1.0.432",
   "description": "Some utilities for the development of socket.io applications with Inversify",
   "keywords": [
     "inversify",
