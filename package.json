@@ -59,7 +59,7 @@
     "@rollup/plugin-typescript": "^9.0.2",
     "@semantic-release/exec": "6.0.3",
     "@semantic-release/git": "10.0.1",
-    "@swc/core": "^1.3.32",
+    "@swc/core": "^1.3.34",
     "@swc/jest": "^0.2.24",
     "@types/jest": "^29.4.0",
     "@types/node": "^18.13.0",
