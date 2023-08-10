@@ -43,10 +43,13 @@
       "npm run format:ts"
     ]
   },
+  "overrides": {
+    "engine.io": "6.5.1"
+  },
   "dependencies": {
     "inversify": "6.0.1",
     "reflect-metadata": "0.1.13",
-    "socket.io": "^4.7.2"
+    "socket.io": "4.7.1"
   },
   "devDependencies": {
     "@alxshelepenok/eslint-config": "^1.0.306",
@@ -63,7 +66,6 @@
     "@swc/jest": "^0.2.28",
     "@types/jest": "^29.5.3",
     "@types/node": "^18.17.4",
-    "@types/socket.io": "^3.0.2",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",
     "conventional-changelog-conventionalcommits": "6.1.0",
