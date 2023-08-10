@@ -1,4 +1,4 @@
-name: Analyze
+name: Analyse
 
 on:
   pull_request:
