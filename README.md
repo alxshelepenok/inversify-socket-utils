@@ -10,7 +10,6 @@ You can install `inversify-socket-utils` using npm:
 npm install inversify inversify-socket-utils reflect-metadata --save
 ```
 
-The `inversify-socket-utils` type definitions are included in the npm module and require TypeScript 2.0.
 Please refer to the [InversifyJS documentation](https://github.com/inversify/InversifyJS#installation) to learn more about the installation process.
 
 ## How to use
