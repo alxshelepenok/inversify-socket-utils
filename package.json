@@ -44,7 +44,7 @@
     ]
   },
   "overrides": {
-    "engine.io": "6.5.1"
+    "engine.io": "6.5.4"
   },
   "dependencies": {
     "inversify": "6.0.2",
