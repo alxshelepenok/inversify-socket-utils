@@ -166,6 +166,9 @@ export const connectedSocket: () => ParameterDecorator = paramDecoratorFactory(
 export const payload: () => ParameterDecorator = paramDecoratorFactory(
   PARAMETER_TYPE.SOCKET_BODY,
 );
+export const messageCallback: () => ParameterDecorator = paramDecoratorFactory(
+  PARAMETER_TYPE.SOCKET_CALLBACK,
+);
 
 export const socketQueryParam: (name: string) => ParameterDecorator =
   paramDecoratorFactory(PARAMETER_TYPE.SOCKET_QUERY_PARAM);
