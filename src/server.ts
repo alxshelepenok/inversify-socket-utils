@@ -79,7 +79,7 @@ export class InversifySocketServer {
       }
 
       if (metadata.type === ACTION_TYPE.MESSAGE) {
-        socket.on(metadata.name, (payload) => {
+        socket.on(metadata.name, (...payload) => {
           this.handleAction(
             socket,
             controllerMetadata,
@@ -97,26 +97,36 @@ export class InversifySocketServer {
     controller: interfaces.ControllerMetadata,
     action: interfaces.ControllerActionMetadata,
     parameters: interfaces.ControllerParameterMetadata,
-    payload?: unknown,
+    payload: unknown[],
   ) {
     let paramList: interfaces.ParameterMetadata[] = [];
     if (parameters) {
       paramList = parameters[action.key] || [];
     }
+      
+    const cb = (typeof payload[payload.length-1] == "function") ? payload.splice(-1,1)[0] : undefined;
 
-    const args = this.extractParams(socket, payload, paramList);
-    (
+    const args = this.extractParams(socket, payload, paramList, cb);
+    const result = (
       this.container.getNamed<interfaces.Controller>(
         TYPE.Controller,
         (controller.target as { name: string }).name,
       ) as Record<string, (...a: Array<unknown>) => unknown>
     )[action.key](...args);
+    if(cb) {
+      if(result instanceof Promise){
+        result.then(cb)
+      } else {
+        cb(result);
+      }
+    }
   }
 
   private extractParams(
     socket: SocketIO.Socket,
     payload: unknown,
     params: Array<interfaces.ParameterMetadata>,
+    cb: function
   ) {
     const args: Array<unknown> = [];
 
@@ -140,8 +150,14 @@ export class InversifySocketServer {
         case PARAMETER_TYPE.SOCKET_ROOMS:
           args[index] = socket.rooms;
           return;
-        default:
+        case PARAMETER_TYPE.SOCKET_BODY:
           args[index] = payload;
+          return;
+        case PARAMETER_TYPE.SOCKET_CALLBACK:
+          args[index] = cb;
+          return;
+        default:
+          args[index] = undefined;
       }
     });
 
