@@ -1,12 +1,12 @@
 import "reflect-metadata";
 
-import { interfaces as inversifyInterfaces } from "inversify";
+import { Container } from "inversify";
 
 import { METADATA_KEY, NO_CONTROLLERS_FOUND, TYPE } from "./constants";
 import * as interfaces from "./interfaces";
 
 export const getControllersFromContainer = (
-  container: inversifyInterfaces.Container,
+  container: Container,
   forceControllers: boolean,
 ) => {
   if (container.isBound(TYPE.Controller)) {

@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "es6",
+    "target": "es2022",
     "module": "commonjs",
     "moduleResolution": "node",
-    "lib": ["es2020"],
+    "lib": ["es2022"],
     "strict": true,
     "sourceMap": true,
     "declaration": true,

@@ -106,9 +106,9 @@ export class InversifySocketServer {
 
     const args = this.extractParams(socket, payload, paramList);
     (
-      this.container.getNamed<interfaces.Controller>(
+      this.container.get<interfaces.Controller>(
         TYPE.Controller,
-        (controller.target as { name: string }).name,
+        controller.target as { name: string },
       ) as Record<string, (...a: Array<unknown>) => unknown>
     )[action.key](...args);
   }
