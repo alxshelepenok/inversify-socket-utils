@@ -63,7 +63,7 @@
     "@semantic-release/exec": "6.0.3",
     "@semantic-release/git": "10.0.1",
     "@swc/core": "^1.4.17",
-    "@swc/jest": "^0.2.36",
+    "@swc/jest": "^0.2.37",
     "@types/jest": "^29.5.13",
     "@types/node": "^20.16.5",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
