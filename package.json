@@ -65,7 +65,7 @@
     "@swc/core": "^1.4.17",
     "@swc/jest": "^0.2.37",
     "@types/jest": "^29.5.14",
-    "@types/node": "^20.17.30",
+    "@types/node": "^22.14.1",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "conventional-changelog-conventionalcommits": "7.0.2",
