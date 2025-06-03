@@ -47,7 +47,7 @@
     "engine.io": "6.5.5"
   },
   "dependencies": {
-    "inversify": "^7.5.1",
+    "inversify": "^7.5.2",
     "reflect-metadata": "0.2.2",
     "socket.io": "4.7.5"
   },
