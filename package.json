@@ -44,13 +44,13 @@
     "socket.io": "^4.7.5"
   },
   "devDependencies": {
-    "@semantic-release/exec": "6.0.3",
-    "@semantic-release/git": "10.0.1",
+    "@semantic-release/exec": "^7.1.0",
+    "@semantic-release/git": "^11.0.1",
     "@types/bun": "^1.4.2",
     "@types/node": "^26.6.2",
     "conventional-changelog-conventionalcommits": "^10.4.0",
     "inversify": "^7.6.1",
-    "semantic-release": "^22.0.12",
+    "semantic-release": "^25.0.9",
     "socket.io": "^4.7.5",
     "socket.io-client": "^4.8.3",
     "typescript": "^5.9.3"
