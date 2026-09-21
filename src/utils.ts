@@ -2,8 +2,8 @@ import "reflect-metadata";
 
 import { Container } from "inversify";
 
-import { METADATA_KEY, NO_CONTROLLERS_FOUND, TYPE } from "./constants";
 import * as interfaces from "./interfaces";
+import { METADATA_KEY, NO_CONTROLLERS_FOUND, TYPE } from "./constants";
 
 export const getControllersFromContainer = (
   container: Container,

@@ -9,7 +9,7 @@ import {
   onConnect,
   onDisconnect,
   onMessage,
-} from "@/src";
+} from "inversify-socket-utils";
 
 @injectable()
 @controller("/namespace")

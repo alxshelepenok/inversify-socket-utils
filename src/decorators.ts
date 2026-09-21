@@ -1,149 +1,66 @@
 import "reflect-metadata";
 
-import { ACTION_TYPE, METADATA_KEY, PARAMETER_TYPE } from "./constants";
 import * as interfaces from "./interfaces";
+import { ACTION_TYPE, METADATA_KEY, PARAMETER_TYPE } from "./constants";
 
 export const controller =
   (namespace: string) =>
   (target: NewableFunction): void => {
-    const currentMetadata: interfaces.ControllerMetadata = {
-      namespace,
+    Reflect.defineMetadata(
+      METADATA_KEY.Controller,
+      { namespace, target },
       target,
-    };
+    );
 
-    Reflect.defineMetadata(METADATA_KEY.Controller, currentMetadata, target);
+    const previousMetadata: interfaces.ControllerMetadata[] =
+      Reflect.getMetadata(METADATA_KEY.Controller, Reflect) ?? [];
 
-    const previousMetadata: Array<interfaces.ControllerMetadata> =
-      Reflect.getMetadata(METADATA_KEY.Controller, Reflect) || [];
-
-    const newMetadata = [currentMetadata, ...previousMetadata];
-
-    Reflect.defineMetadata(METADATA_KEY.Controller, newMetadata, Reflect);
+    Reflect.defineMetadata(
+      METADATA_KEY.Controller,
+      [{ namespace, target }, ...previousMetadata],
+      Reflect,
+    );
   };
 
-export const onConnect =
+const defineActionMetadata =
+  (type: ACTION_TYPE) =>
   (name: string): interfaces.ActionDecorator =>
   (target: interfaces.DecoratorTarget, key: string): void => {
-    const metadata: interfaces.ControllerActionMetadata = {
-      key,
-      name,
-      target,
-      type: ACTION_TYPE.CONNECT,
-    };
+    const previousMetadata: interfaces.ControllerActionMetadata[] =
+      Reflect.getMetadata(METADATA_KEY.Action, target.constructor) ?? [];
 
-    let metadataList: interfaces.ControllerActionMetadata[] = [];
-
-    if (Reflect.hasMetadata(METADATA_KEY.Action, target.constructor)) {
-      metadataList = Reflect.getMetadata(
-        METADATA_KEY.Action,
-        target.constructor,
-      );
-    } else {
-      Reflect.defineMetadata(
-        METADATA_KEY.Action,
-        metadataList,
-        target.constructor,
-      );
-    }
-
-    metadataList.push(metadata);
+    Reflect.defineMetadata(
+      METADATA_KEY.Action,
+      [...previousMetadata, { key, name, target, type }],
+      target.constructor,
+    );
   };
 
-export const onDisconnect =
-  (name: string): interfaces.ActionDecorator =>
-  (target: interfaces.DecoratorTarget, key: string) => {
-    const metadata: interfaces.ControllerActionMetadata = {
-      key,
-      name,
-      target,
-      type: ACTION_TYPE.DISCONNECT,
-    };
+export const onConnect: (name: string) => interfaces.ActionDecorator =
+  defineActionMetadata(ACTION_TYPE.CONNECT);
 
-    let metadataList: interfaces.ControllerActionMetadata[] = [];
+export const onDisconnect: (name: string) => interfaces.ActionDecorator =
+  defineActionMetadata(ACTION_TYPE.DISCONNECT);
 
-    if (Reflect.hasMetadata(METADATA_KEY.Action, target.constructor)) {
-      metadataList = Reflect.getMetadata(
-        METADATA_KEY.Action,
-        target.constructor,
-      );
-    } else {
-      Reflect.defineMetadata(
-        METADATA_KEY.Action,
-        metadataList,
-        target.constructor,
-      );
-    }
-
-    metadataList.push(metadata);
-  };
-
-export const onMessage =
-  (name: string): interfaces.ActionDecorator =>
-  (target: interfaces.DecoratorTarget, key: string) => {
-    const metadata: interfaces.ControllerActionMetadata = {
-      key,
-      name,
-      target,
-      type: ACTION_TYPE.MESSAGE,
-    };
-
-    let metadataList: interfaces.ControllerActionMetadata[] = [];
-
-    if (Reflect.hasMetadata(METADATA_KEY.Action, target.constructor)) {
-      metadataList = Reflect.getMetadata(
-        METADATA_KEY.Action,
-        target.constructor,
-      );
-    } else {
-      Reflect.defineMetadata(
-        METADATA_KEY.Action,
-        metadataList,
-        target.constructor,
-      );
-    }
-
-    metadataList.push(metadata);
-  };
+export const onMessage: (name: string) => interfaces.ActionDecorator =
+  defineActionMetadata(ACTION_TYPE.MESSAGE);
 
 export const params =
-  (type: PARAMETER_TYPE, name: string) =>
-  (
-    target: unknown | interfaces.Controller,
-    methodName: string | symbol,
-    index: number,
-  ) => {
-    let metadataList: interfaces.ControllerParameterMetadata = {};
-    let parameterMetadataList: interfaces.ParameterMetadata[] = [];
-    const parameterMetadata: interfaces.ParameterMetadata = {
-      index: index,
-      name: name,
-      type: type,
-    };
+  (type: PARAMETER_TYPE, name: string): ParameterDecorator =>
+  (target, methodName, index) => {
+    const { constructor } = target as { constructor: NewableFunction };
 
-    if (
-      Reflect.hasMetadata(
-        METADATA_KEY.Parameter,
-        (target as interfaces.Controller).constructor,
-      )
-    ) {
-      metadataList = Reflect.getMetadata(
-        METADATA_KEY.Parameter,
-        (target as interfaces.Controller).constructor,
-      );
-      if (Object.prototype.hasOwnProperty.call(metadataList, methodName)) {
-        parameterMetadataList = metadataList[methodName as string];
-      }
-      parameterMetadataList.unshift(parameterMetadata);
-    } else {
-      parameterMetadataList.unshift(parameterMetadata);
-    }
+    const metadataList: interfaces.ControllerParameterMetadata =
+      Reflect.getMetadata(METADATA_KEY.Parameter, constructor) ?? {};
+    const previousMetadata: interfaces.ParameterMetadata[] =
+      metadataList[methodName as string] ?? [];
 
-    metadataList[methodName as string] = parameterMetadataList;
-    Reflect.defineMetadata(
-      METADATA_KEY.Parameter,
-      metadataList,
-      (target as interfaces.Controller).constructor,
-    );
+    metadataList[methodName as string] = [
+      { index, name, type },
+      ...previousMetadata,
+    ];
+
+    Reflect.defineMetadata(METADATA_KEY.Parameter, metadataList, constructor);
   };
 
 const paramDecoratorFactory =
