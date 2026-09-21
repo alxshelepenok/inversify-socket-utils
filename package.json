@@ -34,22 +34,27 @@
     "clean": "rm -rf target",
     "typecheck": "tsc -p tsconfig.json",
     "semantic-release": "semantic-release",
-    "start": "bun run examples/basic/server.ts"
+    "start": "bun run examples/basic/server.ts",
+    "start:express": "bun run examples/express/server.ts"
   },
   "dependencies": {
     "reflect-metadata": "^0.2.2"
   },
   "peerDependencies": {
-    "inversify": "^7.6.1",
+    "inversify": "^7.6.1 || ^8.2.3",
     "socket.io": "^4.7.5"
   },
   "devDependencies": {
+    "@inversifyjs/http-core": "^5.6.1",
+    "@inversifyjs/http-express": "^5.6.1",
     "@semantic-release/exec": "^7.1.0",
     "@semantic-release/git": "^11.0.1",
     "@types/bun": "^1.4.2",
+    "@types/express": "^5.0.6",
     "@types/node": "^26.6.2",
     "conventional-changelog-conventionalcommits": "^9.3.1",
-    "inversify": "^7.6.1",
+    "express": "^5.2.1",
+    "inversify": "^8.2.3",
     "semantic-release": "^25.0.9",
     "socket.io": "^4.7.5",
     "socket.io-client": "^4.8.3",

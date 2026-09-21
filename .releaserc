@@ -8,7 +8,8 @@
         "releaseRules": [
           { "type": "chore", "release": "patch" },
           { "type": "chore", "scope": "release", "release": false },
-          { "type": "refactor", "release": "patch" }
+          { "type": "refactor", "release": "patch" },
+          { "type": "major", "release": "major" }
         ]
       }
     ],
