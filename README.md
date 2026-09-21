@@ -10,6 +10,12 @@ You can install `inversify-socket-utils` using npm:
 npm install inversify inversify-socket-utils reflect-metadata --save
 ```
 
+Or any other package manager, for example bun:
+
+```sh
+bun add inversify inversify-socket-utils reflect-metadata
+```
+
 Please refer to the [InversifyJS documentation](https://github.com/inversify/InversifyJS?tab=readme-ov-file#-installation) to learn more about the installation process.
 
 ## How to use

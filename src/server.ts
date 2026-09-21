@@ -3,8 +3,9 @@ import "reflect-metadata";
 import * as inversify from "inversify";
 import * as SocketIO from "socket.io";
 
-import { ACTION_TYPE, PARAMETER_TYPE, TYPE } from "./constants";
 import * as interfaces from "./interfaces";
+import { ACTION_TYPE, PARAMETER_TYPE, TYPE } from "./constants";
+
 import {
   getActionMetadata,
   getControllerMetadata,

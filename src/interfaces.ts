@@ -1,21 +1,14 @@
 import { ACTION_TYPE, PARAMETER_TYPE } from "./constants";
 
-export type Controller = {};
-
-type Prototype<T> = {
-  [P in keyof T]: T[P] extends NewableFunction ? T[P] : T[P] | undefined;
-} & {
-  constructor: NewableFunction;
-};
+export type Controller = object;
 
 interface ConstructorFunction<T = Record<string, unknown>> {
   new (...args: Array<unknown>): T;
-  prototype: Prototype<T>;
 }
 
 export type DecoratorTarget<T = unknown> =
   | ConstructorFunction<T>
-  | Prototype<T>;
+  | object;
 
 export interface ActionDecorator {
   (target: DecoratorTarget, key: string): void;

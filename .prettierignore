@@ -1,9 +1,0 @@
-*.*
-!*.json
-!*.md
-!*.mdx
-!*.ts
-!*.yml
-!*.js
-/coverage/
-/target/

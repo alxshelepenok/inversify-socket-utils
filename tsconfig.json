@@ -1,27 +1,24 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "target": "es2022",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "preserve",
+    "moduleResolution": "bundler",
     "lib": ["es2022"],
     "strict": true,
-    "sourceMap": true,
-    "declaration": true,
-    "noUnusedLocals": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
+    "isolatedModules": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "allowUnreachableCode": true,
-    "allowSyntheticDefaultImports": true,
-    "typeRoots": ["node_modules/@types"],
-    "declarationDir": "target/types",
-    "outDir": "target/lib",
+    "noEmit": true,
+    "types": ["node", "bun"],
     "paths": {
-      "@/src": ["./src"]
+      "@/src": ["./src"],
+      "inversify-socket-utils": ["./src/index.ts"]
     }
   },
-  "include": ["src", "examples", "internal"],
+  "include": ["src", "examples"],
   "exclude": ["node_modules"]
 }

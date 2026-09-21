@@ -24,12 +24,10 @@ coverage
 # node-waf configuration
 .lock-wscript
 
-# eslint cache
-.eslintcache
-
 # dependency directory
 node_modules
 
 # only apps should have lockfiles
 npm-shrinkwrap.json
 yarn.lock
+*.tgz

@@ -1,7 +1,7 @@
 {
   "name": "inversify-socket-utils",
   "version": "1.0.1202",
-  "description": "Some utilities for the development of socket.io applications with Inversify",
+  "description": "Some utilities for the development of socket.io applications with Inversify.",
   "keywords": [
     "inversify",
     "socket.io"
@@ -13,79 +13,45 @@
   },
   "license": "MIT",
   "author": "Alexander Shelepenok <alxshelepenok@gmail.com>",
-  "main": "target/inversify-socket-utils.umd.js",
-  "module": "target/inversify-socket-utils.es5.js",
-  "typings": "target/types/src/index.d.ts",
+  "main": "target/inversify-socket-utils.cjs",
+  "module": "target/inversify-socket-utils.js",
+  "types": "target/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./target/types/index.d.ts",
+      "import": "./target/inversify-socket-utils.js",
+      "require": "./target/inversify-socket-utils.cjs"
+    }
+  },
   "files": [
     "target"
   ],
   "scripts": {
-    "build": "npm run clean && tsc && rollup -c internal/rollup/rollup-config.ts",
-    "clean": "rimraf target",
-    "format": "npm run format:ts",
-    "format:ts": "eslint . --ext .ts --fix && prettier --write .",
-    "lint": "npm run lint:ts",
-    "lint:commit": "commitlint",
-    "lint:staged": "lint-staged",
-    "lint:ts": "eslint . --ext .ts && prettier --check .",
-    "prepare": "husky install",
+    "build": "bun run clean && tsc -p tsconfig.build.json && bun run build:cjs && bun run build:esm",
+    "build:cjs": "bun build src/index.ts --target=node --format=cjs --packages=external --sourcemap=linked --outdir=target --entry-naming=inversify-socket-utils.cjs",
+    "build:esm": "bun build src/index.ts --target=node --format=esm --packages=external --sourcemap=linked --outdir=target --entry-naming=inversify-socket-utils.js",
+    "test": "bun test",
+    "clean": "rm -rf target",
+    "typecheck": "tsc -p tsconfig.json",
     "semantic-release": "semantic-release",
-    "start": "ts-node -r tsconfig-paths/register examples/basic/server.ts",
-    "test": "jest --runInBand --passWithNoTests --config internal/testing/jest-config.ts"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "lint-staged": {
-    "*.ts": [
-      "npm run format:ts"
-    ]
-  },
-  "overrides": {
-    "engine.io": "6.5.5"
+    "start": "bun run examples/basic/server.ts"
   },
   "dependencies": {
+    "reflect-metadata": "^0.2.2"
+  },
+  "peerDependencies": {
     "inversify": "^7.6.1",
-    "reflect-metadata": "0.2.2",
-    "socket.io": "4.7.5"
+    "socket.io": "^4.7.5"
   },
   "devDependencies": {
-    "@alxshelepenok/eslint-config": "^1.0.600",
-    "@commitlint/cli": "^19.0.3",
-    "@commitlint/config-conventional": "^19.0.3",
-    "@jest/types": "^30.4.1",
-    "@rollup/plugin-commonjs": "^22.0.2",
-    "@rollup/plugin-json": "^5.0.2",
-    "@rollup/plugin-node-resolve": "^15.3.1",
-    "@rollup/plugin-typescript": "^9.0.2",
     "@semantic-release/exec": "6.0.3",
     "@semantic-release/git": "10.0.1",
-    "@swc/core": "^1.4.17",
-    "@swc/jest": "^0.2.39",
-    "@types/jest": "^29.5.14",
-    "@types/node": "^22.20.0",
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
-    "@typescript-eslint/parser": "^7.18.0",
-    "conventional-changelog-conventionalcommits": "7.0.2",
-    "eslint": "^8.57.1",
-    "eslint-config-prettier": "^9.1.2",
-    "eslint-import-resolver-typescript": "^3.10.1",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-simple-import-sort": "^12.1.1",
-    "husky": "9.0.11",
-    "jest": "^29.7.0",
-    "lint-staged": "^15.5.2",
-    "prettier": "3.6.2",
-    "prettier-plugin-packagejson": "2.4.14",
-    "rimraf": "5.0.10",
-    "rollup": "^2.79.2",
+    "@types/bun": "^1.4.2",
+    "@types/node": "^26.6.2",
+    "inversify": "^7.6.1",
     "semantic-release": "^22.0.12",
-    "ts-node": "^10.9.2",
-    "tsconfig-paths": "^4.2.0",
-    "typescript": "^4.9.5"
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.8.3",
+    "typescript": "^5.9.3"
   }
 }
